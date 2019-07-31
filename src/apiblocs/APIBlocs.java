@@ -28,5 +28,6 @@ public class APIBlocs {
         MercadoBitcoin mb = new MercadoBitcoin();
         
         System.out.println( mb.getSell());
+        System.out.println( mb.getBuy());
     }
 }
