@@ -44,7 +44,12 @@ public class MercadoBitcoin {
     }
 
     public Double getSell() throws IOException {
-        
+
         return getValues("btc").getDouble("sell");
+    }
+
+    public Double getBuy() throws IOException {
+
+        return getValues("btc").getDouble("buy");
     }
 }
