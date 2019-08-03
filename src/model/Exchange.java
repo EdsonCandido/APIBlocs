@@ -14,6 +14,7 @@ import org.json.JSONObject;
  * @author Gabriel
  */
 public abstract class Exchange {
+    
     protected String url;
     protected JSONObject json;
     
