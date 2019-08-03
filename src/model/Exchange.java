@@ -19,31 +19,31 @@ public abstract class Exchange {
     
     public abstract void getValues() throws IOException;
     
-    public long getDate() throws IOException {
+    public long getDate(){
         return this.json.getLong("date");
     }
     
-    public float getSell() throws IOException {
+    public float getSell(){
         return this.json.getFloat("sell");
     }
 
-    public float getBuy() throws IOException {
+    public float getBuy(){
         return this.json.getFloat("buy");
     }
        
-    public float getLast() throws IOException {
+    public float getLast(){
         return this.json.getFloat("last");
     }
 
-    public float getHigh() throws IOException {
+    public float getHigh(){
         return this.json.getFloat("high");
     }
     
-    public float getLow() throws IOException {
+    public float getLow(){
         return this.json.getFloat("low");
     }
 
-    public float getVol() throws IOException {
+    public float getVol(){
         return this.json.getFloat("vol");
     }
     
