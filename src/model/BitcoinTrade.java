@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model;
 
 import java.io.BufferedReader;
@@ -15,12 +14,12 @@ import org.json.JSONObject;
 
 /**
  *
- * @author edson
+ * @author Gabriel Guilherme
  */
-public final class MercadoBitcoin extends Exchange {
+public final class BitcoinTrade extends Exchange {
 
-    public MercadoBitcoin() throws IOException {
-        this.url = "https://www.mercadobitcoin.net/api/BTC";
+    public BitcoinTrade() throws IOException {
+        this.url = "https://api.bitcointrade.com.br/v2/public/BRLBTC";
         getValues();
     }
 
@@ -44,7 +43,13 @@ public final class MercadoBitcoin extends Exchange {
         BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 
         JSONObject ticker = new JSONObject(br.readLine());
-        this.json = ticker.getJSONObject("ticker");
+        this.json = ticker.getJSONObject("data");
 
     }
+    
+    @Override
+    public float getVol(){
+        return this.json.getFloat("volume");
+    }
+    
 }
