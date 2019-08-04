@@ -5,51 +5,28 @@
  */
 package model;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import org.json.JSONObject;
 
 /**
  *
- * @author Gabriel Guilherme
+ * @author Gabriel
  */
 public final class BitcoinTrade extends Exchange {
 
     public BitcoinTrade() throws IOException {
-        this.url = "https://api.bitcointrade.com.br/v2/public/BRLBTC";
+        this.url = "https://api.bitcointrade.com.br/v2/public/BRLBTC/ticker";
         getValues();
     }
 
     @Override
     public void getValues() throws IOException {
-
-        StringBuilder webservice = new StringBuilder();
-
-        webservice.append(this.url);
-        webservice.append("/ticker");
-
-        URL web = new URL(webservice.toString());
-        HttpURLConnection conn = (HttpURLConnection) web.openConnection();
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("ACCEPT", "application/jason");
-
-        if (conn.getResponseCode() != 200) {
-            System.out.println("Erro " + conn.getResponseCode() + " ao obter dados da URL " + url);
-        }
-
-        BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-
-        JSONObject ticker = new JSONObject(br.readLine());
-        this.json = ticker.getJSONObject("data");
-
+        super.getValues();
+        this.jsonTicker = jsonTicker.getJSONObject("data");
     }
     
     @Override
     public float getVol(){
-        return this.json.getFloat("volume");
+        return this.jsonTicker.getFloat("volume");
     }
     
 }
