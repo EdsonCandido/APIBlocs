@@ -14,8 +14,10 @@ import java.io.IOException;
 public final class BitCambio extends Exchange {
 
     public BitCambio() throws IOException {
-        this.url = "https://bitcambio_api.blinktrade.com/api/v1/BRL/ticker";
-        getValues();
+        this.urlTicker = "https://bitcambio_api.blinktrade.com/api/v1/BRL/ticker";
+        //this.urlOrderbook = "https://bitcambio_api.blinktrade.com/api/v1/BRL/orderbook";
+
+        updateValues();
     }
 
 }

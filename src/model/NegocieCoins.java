@@ -11,10 +11,12 @@ import java.io.IOException;
  *
  * @author Gabriel
  */
-public final class NegocieCoins extends Exchange{
+public final class NegocieCoins extends Exchange {
 
     public NegocieCoins() throws IOException {
-        this.url = "https://broker.negociecoins.com.br/api/v3/btcbrl/ticker";
-        getValues();
+        this.urlTicker = "https://broker.negociecoins.com.br/api/v3/btcbrl/ticker";
+        //this.urlOrderbook = "https://broker.negociecoins.com.br/api/v3/btcbrl/orderbook";
+
+        updateValues();
     }
 }

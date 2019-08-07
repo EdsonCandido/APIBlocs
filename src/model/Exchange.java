@@ -20,16 +20,18 @@ import org.json.JSONObject;
  */
 public abstract class Exchange {
 
-    protected String url;
+    protected String urlTicker;
+    protected String urlOrderbook;
     protected JSONObject jsonTicker;
+    protected JSONObject jsonOrderbook;
 
-    public void getValues() throws IOException {
+    private JSONObject getJSONFromURL(String url) throws IOException {
 
         URL web = new URL(url);
-        
-        //Corrige exception "CertificateException" causado em algumas vers?es de JDK
+
+        //Corrige exception "CertificateException" causado em algumas versões do Java JDK
         HttpsURLConnection.setDefaultHostnameVerifier((String hostname, SSLSession session) -> true);
-        
+
         HttpURLConnection conn = (HttpURLConnection) web.openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("ACCEPT", "application/json");
@@ -41,8 +43,11 @@ public abstract class Exchange {
 
         BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 
-        this.jsonTicker = new JSONObject(br.readLine());
+        return new JSONObject(br.readLine());
+    }
 
+    public void updateValues() throws IOException {        
+        this.jsonTicker = getJSONFromURL(this.urlTicker);
     }
 
     public long getDate() {

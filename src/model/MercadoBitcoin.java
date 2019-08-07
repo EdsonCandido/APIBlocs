@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model;
 
 import java.io.IOException;
@@ -15,13 +14,15 @@ import java.io.IOException;
 public final class MercadoBitcoin extends Exchange {
 
     public MercadoBitcoin() throws IOException {
-        this.url = "https://www.mercadobitcoin.net/api/BTC/ticker";
-        getValues();
+        this.urlTicker = "https://www.mercadobitcoin.net/api/BTC/ticker";
+        //this.urlOrderbook = "https://www.mercadobitcoin.net/api/BTC/orderbook";
+
+        updateValues();
     }
 
     @Override
-    public void getValues() throws IOException {
-        super.getValues();
+    public void updateValues() throws IOException {
+        super.updateValues();
         this.jsonTicker = jsonTicker.getJSONObject("ticker");
     }
 }

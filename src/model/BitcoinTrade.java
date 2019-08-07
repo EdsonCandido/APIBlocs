@@ -14,19 +14,21 @@ import java.io.IOException;
 public final class BitcoinTrade extends Exchange {
 
     public BitcoinTrade() throws IOException {
-        this.url = "https://api.bitcointrade.com.br/v2/public/BRLBTC/ticker";
-        getValues();
+        this.urlTicker = "https://api.bitcointrade.com.br/v2/public/BRLBTC/ticker";
+        //this.urlOrderbook = "https://api.bitcointrade.com.br/v2/public/BRLBTC/orders";
+
+        updateValues();
     }
 
     @Override
-    public void getValues() throws IOException {
-        super.getValues();
+    public void updateValues() throws IOException {
+        super.updateValues();
         this.jsonTicker = jsonTicker.getJSONObject("data");
     }
-    
+
     @Override
-    public float getVol(){
+    public float getVol() {
         return this.jsonTicker.getFloat("volume");
     }
-    
+
 }
