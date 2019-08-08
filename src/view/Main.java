@@ -43,6 +43,18 @@ public class Main extends javax.swing.JFrame {
         imgExcBase3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        lblNomeExc1 = new javax.swing.JLabel();
+        lblCotExc1 = new javax.swing.JLabel();
+        lblDifPrecoExc1 = new javax.swing.JLabel();
+        lblDifPercExc1 = new javax.swing.JLabel();
+        lblNomeExc2 = new javax.swing.JLabel();
+        lblCotExc2 = new javax.swing.JLabel();
+        lblDifPrecoExc2 = new javax.swing.JLabel();
+        lblDifPercExc2 = new javax.swing.JLabel();
+        lblCotExc3 = new javax.swing.JLabel();
+        lblDifPrecoExc3 = new javax.swing.JLabel();
+        lblNomeExc3 = new javax.swing.JLabel();
+        lblDifPercExc3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -138,6 +150,30 @@ public class Main extends javax.swing.JFrame {
 
         imgExcBase3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/no_image.png"))); // NOI18N
 
+        lblNomeExc1.setText("Nome da exchange 1");
+
+        lblCotExc1.setText("Cotação para venda   : R$ -");
+
+        lblDifPrecoExc1.setText("Dif. de preço (- taxas) : R$ -");
+
+        lblDifPercExc1.setText("Dif. de Preço Perc. (%): -%");
+
+        lblNomeExc2.setText("Nome da exchange 2");
+
+        lblCotExc2.setText("Cotação para venda   : R$ -");
+
+        lblDifPrecoExc2.setText("Dif. de preço (- taxas) : R$ -");
+
+        lblDifPercExc2.setText("Dif. de Preço Perc. (%): -%");
+
+        lblCotExc3.setText("Cotação para venda   : R$ -");
+
+        lblDifPrecoExc3.setText("Dif. de preço (- taxas) : R$ -");
+
+        lblNomeExc3.setText("Nome da exchange 3");
+
+        lblDifPercExc3.setText("Dif. de Preço Perc. (%): -%");
+
         jMenu1.setText("Opções");
 
         jMenuItem2.setText("Configurações");
@@ -172,11 +208,29 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator1)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(imgExcBase3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(imgExcBase1)
-                                    .addComponent(imgExcBase2)
-                                    .addComponent(imgExcBase3))
-                                .addGap(0, 272, Short.MAX_VALUE)))
+                                    .addComponent(lblNomeExc3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblCotExc3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblDifPrecoExc3, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                                    .addComponent(lblDifPercExc3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(imgExcBase2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNomeExc1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblCotExc1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblDifPrecoExc1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblDifPercExc1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(imgExcBase1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNomeExc2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblCotExc2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblDifPrecoExc2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblDifPercExc2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(12, 12, 12))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jSeparator2)
@@ -186,15 +240,44 @@ public class Main extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(imgExcBase2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imgExcBase2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblNomeExc1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCotExc1)
+                        .addGap(0, 0, 0)
+                        .addComponent(lblDifPrecoExc1)
+                        .addGap(0, 0, 0)
+                        .addComponent(lblDifPercExc1)))
+                .addGap(1, 1, 1)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblNomeExc2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCotExc2)
+                        .addGap(0, 0, 0)
+                        .addComponent(lblDifPrecoExc2)
+                        .addGap(0, 0, 0)
+                        .addComponent(lblDifPercExc2))
+                    .addComponent(imgExcBase1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(imgExcBase1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(imgExcBase3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(imgExcBase3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(lblNomeExc3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCotExc3)
+                        .addGap(0, 0, 0)
+                        .addComponent(lblDifPrecoExc3)
+                        .addGap(0, 0, 0)
+                        .addComponent(lblDifPercExc3)))
                 .addContainerGap())
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -261,8 +344,20 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcbListaExchanges;
     private javax.swing.JLabel lbl1;
     private javax.swing.JLabel lbl2;
+    private javax.swing.JLabel lblCotExc1;
+    private javax.swing.JLabel lblCotExc2;
+    private javax.swing.JLabel lblCotExc3;
     private javax.swing.JLabel lblCotExcBase;
+    private javax.swing.JLabel lblDifPercExc1;
+    private javax.swing.JLabel lblDifPercExc2;
+    private javax.swing.JLabel lblDifPercExc3;
+    private javax.swing.JLabel lblDifPrecoExc1;
+    private javax.swing.JLabel lblDifPrecoExc2;
+    private javax.swing.JLabel lblDifPrecoExc3;
     private javax.swing.JLabel lblExcBase;
+    private javax.swing.JLabel lblNomeExc1;
+    private javax.swing.JLabel lblNomeExc2;
+    private javax.swing.JLabel lblNomeExc3;
     private javax.swing.JPanel panelExcBase;
     // End of variables declaration//GEN-END:variables
 }
