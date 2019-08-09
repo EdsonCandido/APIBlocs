@@ -5,8 +5,11 @@
  */
 package view;
 
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.*;
+import model.*;
 
 /**
  *
@@ -14,11 +17,51 @@ import javax.swing.UIManager;
  */
 public class Main extends javax.swing.JFrame {
 
+    Exchange exchange[] = new Exchange[4];
+
     /**
      * Creates new form Main
+     *
+     * @throws java.io.IOException
      */
-    public Main() {
+    public Main() throws IOException {
+        inicializar_objetos();
         initComponents();
+    }
+
+    private void inicializar_objetos() {
+        Runnable task0 = () -> {
+            try {
+                exchange[0] = new MercadoBitcoin();
+            } catch (IOException ex) {
+            }
+        };
+
+        Runnable task1 = () -> {
+            try {
+                exchange[1] = new NegocieCoins();
+            } catch (IOException ex) {
+            }
+        };
+
+        Runnable task2 = () -> {
+            try {
+                exchange[2] = new BitcoinTrade();
+            } catch (IOException ex) {
+            }
+        };
+
+        Runnable task3 = () -> {
+            try {
+                exchange[3] = new BitCambio();
+            } catch (IOException ex) {
+            }
+        };
+        task0.run();
+        task1.run();
+        task2.run();
+        task3.run();
+
     }
 
     /**
@@ -38,9 +81,10 @@ public class Main extends javax.swing.JFrame {
         lbl1 = new javax.swing.JLabel();
         lblCotExcBase = new javax.swing.JLabel();
         lbl2 = new javax.swing.JLabel();
-        imgExcBase1 = new javax.swing.JLabel();
-        imgExcBase2 = new javax.swing.JLabel();
-        imgExcBase3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        imgExc2 = new javax.swing.JLabel();
+        imgExc1 = new javax.swing.JLabel();
+        imgExc3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         lblNomeExc1 = new javax.swing.JLabel();
@@ -63,10 +107,15 @@ public class Main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ArbiTrade");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Exchange Base"));
 
-        jcbListaExchanges.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbListaExchanges.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mercado Bitcoin", "Negocie Coins", "BitcoinTrade", "BitCambio" }));
 
         panelExcBase.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -118,19 +167,27 @@ public class Main extends javax.swing.JFrame {
 
         lbl2.setText("Escolha a exchange:");
 
+        jLabel1.setFont(new java.awt.Font("Noto Sans", 2, 10)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("*Lucros tendo como referencial o montante de 1 BTC.");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelExcBase, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lbl2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbListaExchanges, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(panelExcBase, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbl2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jcbListaExchanges, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,47 +198,46 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl2)
                     .addComponent(jcbListaExchanges, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31))
+                .addGap(14, 14, 14)
+                .addComponent(jLabel1))
         );
 
-        imgExcBase1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/no_image.png"))); // NOI18N
+        imgExc2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/no_image.png"))); // NOI18N
 
-        imgExcBase2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/no_image.png"))); // NOI18N
+        imgExc1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/no_image.png"))); // NOI18N
 
-        imgExcBase3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/no_image.png"))); // NOI18N
+        imgExc3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/no_image.png"))); // NOI18N
 
+        lblNomeExc1.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
         lblNomeExc1.setText("Nome da exchange 1");
 
         lblCotExc1.setText("Cotação para venda   : R$ -");
 
-        lblDifPrecoExc1.setText("Dif. de preço (- taxas) : R$ -");
+        lblDifPrecoExc1.setText("Ganho (- taxas)            : R$ -");
 
-        lblDifPercExc1.setText("Dif. de Preço Perc. (%): -%");
+        lblDifPercExc1.setText("Ganho Percentual (%): -%");
 
+        lblNomeExc2.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
         lblNomeExc2.setText("Nome da exchange 2");
 
         lblCotExc2.setText("Cotação para venda   : R$ -");
 
-        lblDifPrecoExc2.setText("Dif. de preço (- taxas) : R$ -");
+        lblDifPrecoExc2.setText("Ganho (- taxas)            : R$ -");
 
-        lblDifPercExc2.setText("Dif. de Preço Perc. (%): -%");
+        lblDifPercExc2.setText("Ganho Percentual (%): -%");
 
         lblCotExc3.setText("Cotação para venda   : R$ -");
 
-        lblDifPrecoExc3.setText("Dif. de preço (- taxas) : R$ -");
+        lblDifPrecoExc3.setText("Ganho (- taxas)            : R$ -");
 
+        lblNomeExc3.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
         lblNomeExc3.setText("Nome da exchange 3");
 
-        lblDifPercExc3.setText("Dif. de Preço Perc. (%): -%");
+        lblDifPercExc3.setText("Ganho Percentual (%): -%");
 
         jMenu1.setText("Opções");
 
         jMenuItem2.setText("Configurações");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Sobre");
@@ -208,28 +264,28 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(imgExcBase3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNomeExc3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblCotExc3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblDifPrecoExc3, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                                .addComponent(imgExc3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblDifPrecoExc3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                                    .addComponent(lblCotExc3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblNomeExc3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lblDifPercExc3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(imgExcBase2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNomeExc1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblCotExc1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblDifPrecoExc1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblDifPercExc1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(imgExc1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblDifPrecoExc1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                                    .addComponent(lblCotExc1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblNomeExc1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblDifPercExc1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(imgExcBase1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNomeExc2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblCotExc2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblDifPrecoExc2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(imgExc2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblDifPrecoExc2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                                    .addComponent(lblCotExc2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblNomeExc2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lblDifPercExc2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(12, 12, 12))
                     .addGroup(layout.createSequentialGroup()
@@ -241,7 +297,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imgExcBase2)
+                    .addComponent(imgExc1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblNomeExc1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -262,13 +318,13 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(lblDifPrecoExc2)
                         .addGap(0, 0, 0)
                         .addComponent(lblDifPercExc2))
-                    .addComponent(imgExcBase1))
+                    .addComponent(imgExc2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addComponent(imgExcBase3))
+                        .addComponent(imgExc3))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(lblNomeExc3)
@@ -286,13 +342,38 @@ public class Main extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        JOptionPane.showMessageDialog(jMenu1, "sdgdd","DKSLHFIOSDJ", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Autores:\n\nEdson Cândido\n"
+                + "Gabriel Guilherme\n"
+                + "Joseph Oliveira\n"
+                + "Salatiel Lopes", "ArbiTrade versão 0.1", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        String nomes[] = {"Mercado Bitcoin", "NegocieCoins", "BitcoinTrade", "BitCambio"};
+
+        JLabel jlabels[] = {imgExcBase, lblExcBase, lblCotExcBase, null, null,
+            imgExc1, lblNomeExc1, lblCotExc1, lblDifPrecoExc1, lblDifPercExc1,
+            imgExc2, lblNomeExc2, lblCotExc2, lblDifPrecoExc2, lblDifPercExc2,
+            imgExc3, lblNomeExc3, lblCotExc3, lblDifPrecoExc3, lblDifPercExc3};
+
+        jlabels[0].setIcon(new ImageIcon(getClass().getResource("/img/" + jcbListaExchanges.getSelectedIndex() + ".png")));
+        jlabels[1].setText(nomes[jcbListaExchanges.getSelectedIndex()]);
+        jlabels[2].setText("R$ " + String.format("%.2f", exchange[jcbListaExchanges.getSelectedIndex()].getSell()));
+
+        for (int i = 0, j = 5; i < 4; i++, j += 5) {
+            if (i != jcbListaExchanges.getSelectedIndex()) {
+                jlabels[j].setIcon(new ImageIcon(getClass().getResource("/img/" + i + ".png")));
+                jlabels[j + 1].setText(nomes[i]);
+                jlabels[j + 2].setText("Cotação para venda   : R$ " + String.format("%.2f", exchange[i].getBuy()));
+                float ganho = exchange[i].getBuy() - exchange[jcbListaExchanges.getSelectedIndex()].getSell();
+                jlabels[j + 3].setText("Ganho (- taxas)            : R$ " + String.format("%.2f", ganho));
+            } else {
+                j -= 5;
+            }
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -324,16 +405,21 @@ public class Main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+                try {
+                    new Main().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel imgExc1;
+    private javax.swing.JLabel imgExc2;
+    private javax.swing.JLabel imgExc3;
     private javax.swing.JLabel imgExcBase;
-    private javax.swing.JLabel imgExcBase1;
-    private javax.swing.JLabel imgExcBase2;
-    private javax.swing.JLabel imgExcBase3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;

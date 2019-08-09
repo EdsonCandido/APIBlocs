@@ -13,9 +13,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Configura&#xe7;&#xf5;es"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
-              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
               <Properties>
@@ -40,6 +37,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -63,33 +63,33 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="imgExcBase3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblNomeExc3" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lblCotExc3" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lblDifPrecoExc3" pref="266" max="32767" attributes="0"/>
-                                  <Component id="lblDifPercExc3" alignment="0" max="32767" attributes="0"/>
+                              <Component id="imgExc3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="15" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblDifPrecoExc3" alignment="1" pref="257" max="32767" attributes="0"/>
+                                  <Component id="lblCotExc3" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="lblNomeExc3" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="lblDifPercExc3" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="imgExcBase2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblNomeExc1" max="32767" attributes="0"/>
-                                  <Component id="lblCotExc1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lblDifPrecoExc1" max="32767" attributes="0"/>
-                                  <Component id="lblDifPercExc1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="imgExc1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="15" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblDifPrecoExc1" alignment="1" pref="257" max="32767" attributes="0"/>
+                                  <Component id="lblCotExc1" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="lblNomeExc1" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="lblDifPercExc1" alignment="1" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="imgExcBase1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblNomeExc2" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lblCotExc2" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lblDifPrecoExc2" max="32767" attributes="0"/>
-                                  <Component id="lblDifPercExc2" alignment="0" max="32767" attributes="0"/>
+                              <Component id="imgExc2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="15" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblDifPrecoExc2" alignment="1" pref="257" max="32767" attributes="0"/>
+                                  <Component id="lblCotExc2" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="lblNomeExc2" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="lblDifPercExc2" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -108,7 +108,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="imgExcBase2" min="-2" max="-2" attributes="0"/>
+                  <Component id="imgExc1" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="lblNomeExc1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -132,14 +132,14 @@
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="lblDifPercExc2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="imgExcBase1" min="-2" max="-2" attributes="0"/>
+                  <Component id="imgExc2" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                      <Component id="imgExcBase3" min="-2" max="-2" attributes="0"/>
+                      <Component id="imgExc3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
@@ -173,15 +173,21 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="panelExcBase" min="-2" pref="314" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbl2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jcbListaExchanges" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="panelExcBase" min="-2" pref="314" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lbl2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jcbListaExchanges" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
+                      <Component id="jLabel1" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -195,7 +201,8 @@
                       <Component id="lbl2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jcbListaExchanges" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -205,10 +212,10 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+                <StringItem index="0" value="Mercado Bitcoin"/>
+                <StringItem index="1" value="Negocie Coins"/>
+                <StringItem index="2" value="BitcoinTrade"/>
+                <StringItem index="3" value="BitCambio"/>
               </StringArray>
             </Property>
           </Properties>
@@ -305,23 +312,32 @@
             <Property name="text" type="java.lang.String" value="Escolha a exchange:"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Noto Sans" size="10" style="2"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="*Lucros tendo como referencial o montante de 1 BTC."/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="imgExcBase1">
+    <Component class="javax.swing.JLabel" name="imgExc2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/img/no_image.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="imgExcBase2">
+    <Component class="javax.swing.JLabel" name="imgExc1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/img/no_image.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="imgExcBase3">
+    <Component class="javax.swing.JLabel" name="imgExc3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/img/no_image.png"/>
@@ -334,6 +350,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblNomeExc1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Noto Sans" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Nome da exchange 1"/>
       </Properties>
     </Component>
@@ -344,16 +363,19 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblDifPrecoExc1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Dif. de pre&#xe7;o (- taxas) : R$ -"/>
+        <Property name="text" type="java.lang.String" value="Ganho (- taxas)            : R$ -"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblDifPercExc1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Dif. de Pre&#xe7;o Perc. (%): -%"/>
+        <Property name="text" type="java.lang.String" value="Ganho Percentual (%): -%"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblNomeExc2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Noto Sans" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Nome da exchange 2"/>
       </Properties>
     </Component>
@@ -364,12 +386,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblDifPrecoExc2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Dif. de pre&#xe7;o (- taxas) : R$ -"/>
+        <Property name="text" type="java.lang.String" value="Ganho (- taxas)            : R$ -"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblDifPercExc2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Dif. de Pre&#xe7;o Perc. (%): -%"/>
+        <Property name="text" type="java.lang.String" value="Ganho Percentual (%): -%"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblCotExc3">
@@ -379,17 +401,20 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblDifPrecoExc3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Dif. de pre&#xe7;o (- taxas) : R$ -"/>
+        <Property name="text" type="java.lang.String" value="Ganho (- taxas)            : R$ -"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblNomeExc3">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Noto Sans" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Nome da exchange 3"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblDifPercExc3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Dif. de Pre&#xe7;o Perc. (%): -%"/>
+        <Property name="text" type="java.lang.String" value="Ganho Percentual (%): -%"/>
       </Properties>
     </Component>
   </SubComponents>
