@@ -13,6 +13,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Configura&#xe7;&#xf5;es"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
               <Properties>
@@ -219,6 +222,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbListaExchangesActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -363,7 +369,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblDifPrecoExc1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ganho (- taxas)            : R$ -"/>
+        <Property name="text" type="java.lang.String" value="Ganho nominal            : R$ -"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblDifPercExc1">
@@ -386,7 +392,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblDifPrecoExc2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ganho (- taxas)            : R$ -"/>
+        <Property name="text" type="java.lang.String" value="Ganho nominal           : R$ -"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblDifPercExc2">
@@ -401,7 +407,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblDifPrecoExc3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ganho (- taxas)            : R$ -"/>
+        <Property name="text" type="java.lang.String" value="Ganho nominal            : R$ -"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblNomeExc3">

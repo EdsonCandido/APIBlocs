@@ -6,6 +6,7 @@
 package view;
 
 import java.io.IOException;
+import java.time.Instant;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -18,6 +19,8 @@ import model.*;
 public class Main extends javax.swing.JFrame {
 
     Exchange exchange[] = new Exchange[4];
+    long intervalUpdate = 5000;
+    boolean controle = false;
 
     /**
      * Creates new form Main
@@ -25,11 +28,16 @@ public class Main extends javax.swing.JFrame {
      * @throws java.io.IOException
      */
     public Main() throws IOException {
-        inicializar_objetos();
         initComponents();
+
+        atualizarObjetos();
+        setTitle("ArbiTrade [ATUALIZADO " + Instant.now() + "]");
+        preencherJLabels();
+        controle = true;
+
     }
 
-    private void inicializar_objetos() {
+    private void atualizarObjetos() {
         Runnable task0 = () -> {
             try {
                 exchange[0] = new MercadoBitcoin();
@@ -116,6 +124,11 @@ public class Main extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Exchange Base"));
 
         jcbListaExchanges.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mercado Bitcoin", "Negocie Coins", "BitcoinTrade", "BitCambio" }));
+        jcbListaExchanges.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbListaExchangesActionPerformed(evt);
+            }
+        });
 
         panelExcBase.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -213,7 +226,7 @@ public class Main extends javax.swing.JFrame {
 
         lblCotExc1.setText("Cotação para venda   : R$ -");
 
-        lblDifPrecoExc1.setText("Ganho (- taxas)            : R$ -");
+        lblDifPrecoExc1.setText("Ganho nominal            : R$ -");
 
         lblDifPercExc1.setText("Ganho Percentual (%): -%");
 
@@ -222,13 +235,13 @@ public class Main extends javax.swing.JFrame {
 
         lblCotExc2.setText("Cotação para venda   : R$ -");
 
-        lblDifPrecoExc2.setText("Ganho (- taxas)            : R$ -");
+        lblDifPrecoExc2.setText("Ganho nominal           : R$ -");
 
         lblDifPercExc2.setText("Ganho Percentual (%): -%");
 
         lblCotExc3.setText("Cotação para venda   : R$ -");
 
-        lblDifPrecoExc3.setText("Ganho (- taxas)            : R$ -");
+        lblDifPrecoExc3.setText("Ganho nominal            : R$ -");
 
         lblNomeExc3.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
         lblNomeExc3.setText("Nome da exchange 3");
@@ -238,6 +251,11 @@ public class Main extends javax.swing.JFrame {
         jMenu1.setText("Opções");
 
         jMenuItem2.setText("Configurações");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Sobre");
@@ -350,9 +368,40 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        new Thread() {
+            public void run() {
+                while (true) {
+                    try {
+                        Thread.sleep(2500);
+
+                        if (controle) {
+                            Thread.sleep(intervalUpdate);
+                            setTitle("ArbiTrade [ATUALIZANDO...]");
+                            atualizarObjetos();
+                            preencherJLabels();
+                            setTitle("ArbiTrade [ATUALIZADO " + Instant.now() + "]");
+                        }
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }.start();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jcbListaExchangesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbListaExchangesActionPerformed
+        preencherJLabels();
+    }//GEN-LAST:event_jcbListaExchangesActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        intervalUpdate = Long.parseLong(JOptionPane.showInputDialog(this, "Informe o intervalo de atualização (em segundos):",
+                "Configurações", WIDTH)) * 1000;
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    final void preencherJLabels() {
         // TODO add your handling code here:
         String nomes[] = {"Mercado Bitcoin", "NegocieCoins", "BitcoinTrade", "BitCambio"};
-
+       // float taxas[] = {0.7f, 0.00010848f, 0.4f, 0.0002f, 0.5f, 0.00055188f, 0.99f, 0.00018f};
         JLabel jlabels[] = {imgExcBase, lblExcBase, lblCotExcBase, null, null,
             imgExc1, lblNomeExc1, lblCotExc1, lblDifPrecoExc1, lblDifPercExc1,
             imgExc2, lblNomeExc2, lblCotExc2, lblDifPrecoExc2, lblDifPercExc2,
@@ -368,12 +417,15 @@ public class Main extends javax.swing.JFrame {
                 jlabels[j + 1].setText(nomes[i]);
                 jlabels[j + 2].setText("Cotação para venda   : R$ " + String.format("%.2f", exchange[i].getBuy()));
                 float ganho = exchange[i].getBuy() - exchange[jcbListaExchanges.getSelectedIndex()].getSell();
-                jlabels[j + 3].setText("Ganho (- taxas)            : R$ " + String.format("%.2f", ganho));
+                jlabels[j + 3].setText("Ganho nominal            : R$ " + String.format("%.2f", ganho));
+                ganho = (exchange[i].getBuy() / exchange[jcbListaExchanges.getSelectedIndex()].getSell()-1)*100;
+                jlabels[j + 4].setText("Ganho Percentual (%): " + String.format("%.2f%%", ganho));
+                
             } else {
                 j -= 5;
             }
         }
-    }//GEN-LAST:event_formWindowOpened
+    }
 
     /**
      * @param args the command line arguments
